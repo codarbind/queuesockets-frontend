@@ -10,9 +10,9 @@ class SocketService {
   private socketUrl: string = import.meta.env.VITE_SOCKET_URL || 'http://localhost:3001';
 
   // Initialize and connect to the socket
-  connect(): void {
+  connect(customUrl?: string): void {
   
-    this.socket = io(this.socketUrl);
+    this.socket = io(customUrl||this.socketUrl);
 
     this.socket.on('connect_error', (error) => {
         console.error('Connection failed:', error);
